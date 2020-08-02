@@ -39,11 +39,12 @@ vector<bool> sieve(int n){
     prime[1]=false;
     int m = sqrt(n);
 
-    for (int i=2; i<=m; i++)
-        if (prime[i])
-    for (int k=i*i; k<=n; k+=i)
-        prime[k]=false;
-
+    for (int i=2; i<=m; i++){
+        if (prime[i]){
+            for (int k=i*i; k<=n; k+=i)
+                prime[k]=false;
+        }
+    }
     return prime;
 }
 
@@ -54,7 +55,7 @@ int main(){
 
     auto result = sieve(n);
     cout<<boolalpha;
-    cout<<result[n];
+    cout<<result[n]<<endl;
 
     return 0;
 }
